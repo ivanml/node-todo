@@ -1,0 +1,20 @@
+{
+  "name": "node-todo",
+  "description": "Simple todo application.",
+  "main": "server.js",
+  "authors": [
+    "Scotch"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ivanml/node-todo",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

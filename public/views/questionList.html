@@ -1,0 +1,62 @@
+<div class="container">
+
+    <!-- HEADER AND QUESTION COUNT -->
+    <div class="col-sm-offset-2">
+        <h1>Question Board</h1>
+    </div>
+
+    <hr class="col-sm-8 col-sm-offset-2">
+
+    <!-- QUESTION LIST -->
+    <div id="question-list" class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+            <!-- LOOP OVER THE QUESTIONS IN $scope.questions -->
+            <div class="container" ng-repeat="question in questions | orderBy: '-votes'">
+                <div class="row">
+                    <div style="margin-bottom: 5px">
+                        <a href="/questions/{{ question._id }}">{{ question.title }}</a>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <a href="" style="text-decoration: none" ng-click="upVote(question._id)">
+                            <span class="label label-warning"><span class="glyphicon glyphicon-arrow-up"></span> Vote {{ question.votes }}</span>
+                        </a>
+                        <a href="/questions/{{ question._id }}" style="text-decoration: none"><span class="label label-success">Answers {{ question.answer_num }}</span></a>
+                        <button ng-click="deleteQuestion(question._id)" class="btn-xs btn-link pull-right" type="button">Delete</button>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+            <p class="text-center" ng-show="loading">
+                <span class="fa fa-spinner fa-spin fa-3x"></span>
+            </p>
+
+        </div>
+    </div>
+
+    <br>
+
+    <!-- FORM TO POST QUESTIONS -->
+    <div id="question-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
+                    <!-- BIND THIS VALUE TO formData IN ANGULAR -->
+                    <input rows="4" type="text" class="form-control" style="margin-bottom: 5px" placeholder="title" ng-model="formData.title"></input>
+                    <textarea rows="4" type="text" class="form-control"
+                              placeholder="description"
+                              ng-model="formData.description"></textarea>
+                </div>
+
+                <!-- postQuestion() WILL CREATE NEW QUESTIONS -->
+                <button type="submit" class="btn btn-primary btn-md" ng-click="postQuestion()">Post Question</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center text-muted">
+        <p>A demo by Lei Mao, Pruthvi Krishna Nutalapati </p>
+    </div>
+
+</div>
