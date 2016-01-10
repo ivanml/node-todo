@@ -1,4 +1,4 @@
-var questionApp = angular.module('questionApp', ['ngRoute', 'questionListController', 'questionService', 'questionDetailController']);
+var questionApp = angular.module('questionApp', ['ngRoute', 'questionListController', 'questionService', 'questionDetailController', 'answerService']);
 
 questionApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 

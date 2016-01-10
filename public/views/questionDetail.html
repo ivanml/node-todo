@@ -1,48 +1,61 @@
 <div class="container">
 
-    <!-- HEADER AND QUESTION COUNT -->
-    <div class="col-sm-offset-2 col-sm-8">
-        <h3 style="margin-bottom: 15px">{{ question.title }}</h3>
-        <a href="" style="text-decoration: none" ng-click="upVoteOne(question._id)">
-            <span class="label label-warning"><span class="glyphicon glyphicon-arrow-up"></span> Vote {{ question.votes }}</span>
-        </a>
-        <hr>
-    </div>
+    <div id="answer-list" class="row">
+        <!-- HEADER AND QUESTION COUNT -->
+        <div class="col-sm-offset-2 col-sm-8">
+            <h3 style="margin-bottom: 15px">{{ question.title }}</h3>
+            <a href="" style="text-decoration: none" ng-click="upVoteOne(question._id)">
+                <span class="label label-warning"><span class="glyphicon glyphicon-arrow-up"></span> Vote {{ question.votes }}</span>
+            </a>
+            <hr>
+        </div>
 
-    <div class="col-sm-6 col-sm-offset-3" style="margin-bottom: 30px">
-        {{ question.description }}
-    </div>
+        <div class="col-sm-8 col-sm-offset-2" style="margin-bottom: 30px">
+            {{ question.description }}
+        </div>
 
-    <div class="col-sm-8 col-sm-offset-2">
-        <h4>Answers</h4>
-        <hr>
+
+        <div class="col-sm-8 col-sm-offset-2">
+            <h4>{{ question.answer_num }} Answers</h4>
+            <hr>
+        </div>
+
+        <!--Answers List -->
+        <div class="col-sm-8 col-sm-offset-2" style="margin-bottom: 15px">
+            <div class="container" ng-repeat="answer in answers | orderBy: '-votes'">
+                <div class="row">
+                    <div style="margin-bottom: 15px">
+                        <a href="" class="glyphicon glyphicon-user"> Anonymous</a>
+                    </div>
+                    <div style="margin-bottom: 5px">
+                        {{ answer.text }}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM TO POST Answers -->
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
+                    <!-- BIND THIS VALUE TO formData IN ANGULAR -->
+                <textarea rows="4" type="text" class="form-control"
+                          placeholder="post your answer"
+                          ng-model="formData.text"></textarea>
+                </div>
+
+                <!-- postQuestion() WILL CREATE NEW QUESTIONS -->
+                <button type="submit" class="btn btn-primary btn-md pull-right" ng-click="postAnswer(question._id)">Post Answer</button>
+            </form>
+        </div>
+
     </div>
 
     <p class="text-center" ng-show="loading">
         <span class="fa fa-spinner fa-spin fa-3x"></span>
     </p>
 
-
-
-<!--    &lt;!&ndash; Answer LIST &ndash;&gt;
-    <div id="question-list" class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-
-            &lt;!&ndash; LOOP OVER THE QUESTIONS IN $scope.questions &ndash;&gt;
-            <div class="container" ng-repeat="answer in answers | orderBy: '-votes'">
-                <div class="row">
-                    <div style="margin-bottom: 5px">
-                        <a href="">{{ answer.text }}</a>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-
-            <p class="text-center" ng-show="loading">
-                <span class="fa fa-spinner fa-spin fa-3x"></span>
-            </p>
-
-        </div>
-    </div>-->
+    <br>
 
 </div>
