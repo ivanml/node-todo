@@ -1,13 +1,11 @@
 <div class="container">
-
-    <div id="answer-list" class="row">
+    <div class="row">
         <!-- HEADER AND QUESTION COUNT -->
-        <div class="col-sm-offset-2 col-sm-8">
-            <h3 style="margin-bottom: 15px">{{ question.title }}</h3>
+        <div class="col-sm-offset-2 col-sm-8" style="margin-bottom: 15px">
+            <h3>{{ question.title }}</h3>
             <a href="" style="text-decoration: none" ng-click="upVoteOne(question._id)">
                 <span class="label label-warning"><span class="glyphicon glyphicon-arrow-up"></span> Vote {{ question.votes }}</span>
             </a>
-            <hr>
         </div>
 
         <div class="col-sm-8 col-sm-offset-2" style="margin-bottom: 30px">
@@ -25,7 +23,7 @@
             <div class="container" ng-repeat="answer in answers | orderBy: '-votes'">
                 <div class="row">
                     <div style="margin-bottom: 15px">
-                        <a href="" class="glyphicon glyphicon-user"> Anonymous</a>
+                        <a href=""><span class="glyphicon glyphicon-user"></span> Anonymous</a>
                     </div>
                     <div style="margin-bottom: 5px">
                         {{ answer.text }}

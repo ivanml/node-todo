@@ -1,12 +1,7 @@
 <div class="container">
-
     <!-- QUESTION LIST -->
-    <div id="question-list" class="row">
+    <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-
-            <h1>Question Board</h1>
-            <hr>
-
             <!-- LOOP OVER THE QUESTIONS IN $scope.questions -->
             <div class="container" ng-repeat="question in questions | orderBy: '-votes'">
                 <div class="row">
@@ -39,9 +34,9 @@
             <form>
                 <div class="form-group">
                     <!-- BIND THIS VALUE TO formData IN ANGULAR -->
-                    <input rows="4" type="text" class="form-control" style="margin-bottom: 5px" placeholder="title" ng-model="formData.title"></input>
+                    <input rows="4" type="text" class="form-control" style="margin-bottom: 5px" placeholder="question title" ng-model="formData.title"></input>
                     <textarea rows="4" type="text" class="form-control"
-                              placeholder="description"
+                              placeholder="description (optional)"
                               ng-model="formData.description"></textarea>
                 </div>
 
